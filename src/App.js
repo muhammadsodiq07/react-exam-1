@@ -8,7 +8,7 @@ import NewSave from "./components/NewSave/NewSave";
 import Save from "./components/Save/Save";
 import Stories from "./components/Stories/Stories";
 import User from "./components/User/User";
-import Notification from "./components/Notifigation/Notifigation"
+import Notification from "./components/Notifigation/Notifigation";
 import obj from "./Object";
 import { v4 as uuidv4 } from "uuid";
 import NewSaveList from "./components/NewSaveList/NewSaveList";
@@ -17,7 +17,7 @@ const allCategories = ["All", ...new Set(obj.map((item) => item.type))];
 
 function App() {
   let [newsave, setnewsave] = useState([]);
-  
+
   const [stories, setstories] = useState([]);
 
   const [nameinput, setnameinput] = useState("");
@@ -33,10 +33,8 @@ function App() {
     setCount(e.target.value.length);
   };
 
-
-
   const AddCategory = () => {
-    setSave([...save, { name: name ,  id: uuidv4()}]);
+    setSave([...save, { name: name, id: uuidv4() }]);
     console.log(save);
   };
 
@@ -131,12 +129,14 @@ function App() {
           }
         />
         <Route path="user/:id" element={<User menuItems={menuItems} />} />
-        <Route path="home/notifigation" element={<Notification/>} />
+        <Route path="home/notifigation" element={<Notification />} />
         <Route path="newsave" element={<NewSave newsave={newsave} />} />
-        <Route path="newsavelist/:id" element={<NewSaveList save={save}
-              setSave={setSave}
-              newsave={newsave} 
-              />} />
+        <Route
+          path="newsavelist/:id"
+          element={
+            <NewSaveList save={save} setSave={setSave} newsave={newsave} />
+          }
+        />
       </Routes>
     </div>
   );
