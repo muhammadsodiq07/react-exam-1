@@ -1,0 +1,41 @@
+.home__save-div {
+  position: relative;
+}
+.home__icons-save {
+  padding-left: 10px;
+}
+.home__saved {
+  position: absolute;
+  top: 30px;
+  left: -70px;
+  width: 250px;
+  height: auto;
+  z-index: 100;
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.home__cheked {
+  padding-left: 20px;
+  margin: 0 !important;
+  color: green;
+  font-weight: 500;
+  padding-bottom: 20px;
+}
+
+.openAdd {
+  background-color: transparent;
+  border: none;
+}
+
+.link__user {
+  text-decoration: none;
+  color: black;
+}
+
+.black {
+  fill: green;
+}
+.white {
+  color: white !important;
+}

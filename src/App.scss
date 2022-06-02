@@ -1,0 +1,25 @@
+@import "./assets/scss/main.scss";
+
+body {
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #e3e3e3;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #000000;
+  border-radius: 10px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1480px;
+  padding: 0 10px;
+  margin: 0 auto;
+}

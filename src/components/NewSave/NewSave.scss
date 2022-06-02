@@ -1,0 +1,67 @@
+.newsave__img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.newsave__header {
+  margin-right: 30px;
+  border-right: 1px solid rgb(186, 186, 186);
+  width: 5.8%;
+  height: auto;
+}
+
+.newsave__ultimate {
+  width: 400px;
+  border-left: 1px solid rgb(186, 186, 186);
+  height: 100vh;
+}
+
+.newsave__main {
+  padding-top: 50px;
+  width: 700px;
+}
+.newsave__left {
+  display: flex;
+  align-items: center;
+}
+
+
+.newsave__name {
+  font-weight: 600;
+}
+
+.newsave__span {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgb(143, 143, 143);
+}
+
+
+.newsave__title {
+  letter-spacing: -0.016em;
+  font-size: 40px;
+  padding-top: 20px;
+  font-weight: 700;
+}
+
+.newsave__note {
+  position: relative;
+  padding: 0;
+  margin: 0 !important;
+  font-size: 13px;
+  padding-left: 20px;
+  font-weight: 600;
+  color: rgb(143, 143, 143);
+}
+
+.newsave__note::before {
+  content: "";
+  display: block;
+  height: 20px;
+  position: absolute;
+  left: 3px;
+  border-left: 2px solid #ccc;
+}

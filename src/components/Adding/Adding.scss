@@ -1,0 +1,82 @@
+.adding {
+  padding-top: 10px !important;
+  margin: 0 auto;
+}
+.add {
+  width: 1100px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add__name {
+  padding: 0;
+  margin: 0;
+  margin-left: 10px !important;
+}
+
+.add__btn {
+  padding: 2px 10px;
+  background-color: #20c997;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 20px;
+}
+.add__btn1 {
+  padding: 2px 10px;
+  background-color: #20c997;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  opacity: 0.5;
+}
+.add__img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.add__textarea-div {
+  text-align: center;
+  position: relative;
+}
+
+.add__textarea {
+  margin-top: 80px;
+  width: 700px;
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  font-size: 20px;
+  resize: none;
+  color: #000;
+}
+.add__textarea::placeholder {
+  color: rgb(153, 153, 153);
+}
+.add__ball {
+  position: relative;
+  display: inline-block;
+  top: -885px;
+  left: -5px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
+.add__ball1 {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: 10px;
+}

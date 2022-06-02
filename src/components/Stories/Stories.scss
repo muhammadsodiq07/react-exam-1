@@ -1,0 +1,66 @@
+.stories__header {
+  margin-right: 30px;
+  border-right: 1px solid rgb(186, 186, 186);
+  width: 5.8%;
+  height: auto;
+}
+
+.stories__unlimite {
+  width: 400px;
+  border-left: 1px solid rgb(186, 186, 186);
+  height: 100vh;
+}
+
+.stories__center {
+  width: 700px;
+  padding-top: 50px;
+}
+
+.stories__title-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stories__title {
+  font-weight: 700;
+  font-size: 40px;
+}
+.stories__btn {
+  padding: 7px 14px;
+  background-color: rgba(26, 137, 23, 1);
+  border: transparent;
+  color: #fff;
+  border-radius: 20px;
+}
+
+.stories__import {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.stories__published {
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 30px;
+}
+
+
+.stories__title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.stories__p {
+  font-weight: 600;
+  color: rgb(126, 126, 126);
+}
+.stories__span {
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  margin-right: 8px !important;
+  color: rgb(126, 126, 126);
+}
