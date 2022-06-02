@@ -1,11 +1,11 @@
 import "./Stories.scss";
 import React from "react";
 import "../Home/Artical/Artical.scss";
-
 import Header from "../Header/Header";
 import Unlimites from "../Unlimites/Unlimites";
+import { Link } from "react-router-dom";
 
-function Stories({ menuItems, setMenuItems, setstories, stories }) {
+function Stories({ stories }) {
   return (
     <div className="d-flex justify-content-between">
       <div className="stories__header">
@@ -25,13 +25,15 @@ function Stories({ menuItems, setMenuItems, setstories, stories }) {
         <hr />
 
         <ul className="home__list">
-          {stories.map((item) => {
+          {stories.map((item,i) => {
             return (
               <>
-                <div className="stories__df d-flex flex-column mb-5">
-                  <p className="stories__title">
+                <div key={i} className="stories__df d-flex flex-column mb-5">
+                 <Link className="stLink" to={`/published/${item.id}`}>
+                 <p className="stories__title">
                   {item.decs}
                   </p>
+                 </Link>
                   <div className="stories__pub d-flex align-items-center">
                     <p className="stories__p m-0 p-0 me-2">Published on Jun 1.</p>
                     <span className="stories__span">1 min read</span>

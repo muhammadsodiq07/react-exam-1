@@ -44,7 +44,7 @@ function Adding({ menuItems, setMenuItems,setstories,stories }) {
   };
 
   const publishHandler = () => {
-    setstories([...stories, {decs: inputVal}])
+    setstories([...stories, {decs: inputVal, id:uuidv4(),} ])
     console.log(stories);
     setMenuItems([
       {

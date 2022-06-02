@@ -1,0 +1,51 @@
+.published__header {
+  margin-right: 30px;
+  border-right: 1px solid rgb(186, 186, 186);
+  width: 5.8%;
+  height: 100vh;
+}
+.published__unlimite {
+  width: 400px;
+  border-left: 1px solid rgb(186, 186, 186);
+  height: 100vh;
+}
+
+.published__center {
+  width: 700px;
+  padding-top: 50px;
+}
+
+.published__desc {
+  padding-top: 30px;
+  width: 500px;
+}
+
+.published__icon {
+  fill: rgb(181, 181, 181);
+}
+
+
+.published__more {
+  padding-top: 80px;
+}
+
+
+.published__love {
+  padding-top: 30px;
+  padding-left: 100px;
+}
+.published__title {
+  font-weight: 700;
+  font-size: 20px !important;
+}
+
+.published__btn {
+  position: relative;
+  top: -10px;
+  margin-left: 10px;
+  padding: 6px 14px;
+  background-color: #000;
+  color: #fff;
+  border: transparent;
+  border-radius: 20px;
+}

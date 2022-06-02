@@ -10,11 +10,11 @@ function NewSaveList({ save,newsave }) {
 
   return (
     <>
-      {save.map((item) => {
+      {save.map((item,i) => {
         if (item.id === location.pathname.split("/").at(-1)) {
           return (
             <>
-               <div className="NewSave d-flex  justify-content-between">
+       <div key={i} className="NewSave d-flex  justify-content-between">
         <div className="newsave__header">
           <Header />
         </div>

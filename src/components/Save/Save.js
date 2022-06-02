@@ -98,11 +98,11 @@ function Save(props) {
                   </div>
                 </div>
                 </Link>
-          {props.save.map((item) => {
+          {props.save.map((item,i) => {
             return (
               <>
               <Link className="newSaveLink" to={`/newsavelist/${item.id}`}> 
-                <div className="save__box d-flex mt-4">
+                <div key={i} className="save__box d-flex mt-4">
                   <div className="save__box-left">
                     <h2 className="save__box-title">{item.name} list</h2>
                     <div className="save__box-btn-box">

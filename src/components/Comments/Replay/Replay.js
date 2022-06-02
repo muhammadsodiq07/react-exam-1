@@ -3,6 +3,7 @@ import "../Comments.scss";
 import logo from "../../../assets/imgs/muhammad-name-img.jpg";
 
 function Replay({ el, addComments, commentSaveHandler, addCommentHandler }) {
+
   let [eachInput, setEachInput] = useState(false);
 
   let [addNewComment, setAddNewComment] = useState([]);
@@ -80,7 +81,7 @@ function Replay({ el, addComments, commentSaveHandler, addCommentHandler }) {
             </button>
           </div>
         </div>
-        <div className={`commetns__replay-div ${eachInput ? "overflow" : ""}`}>
+        <div className={`commetns__replay-div ${eachInput ? "overflow" : "d-none"}`}>
           <div className="comment__logo d-flex align-items-center">
             <img className="comment__img" src={logo} alt="" />
             <p className="comment__name">Muhammadsodiq Koziyev</p>
@@ -140,7 +141,7 @@ function Replay({ el, addComments, commentSaveHandler, addCommentHandler }) {
                         <p className="comment__user-name m-0 p-0">
                           {comment.name}
                         </p>
-                        <span className="comment__span-day">23</span>
+                        <span className="comment__span-day">1 min ago</span>
                       </div>
                     </div>
                     <div>

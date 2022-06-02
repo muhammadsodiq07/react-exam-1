@@ -12,6 +12,7 @@ import Notification from "./components/Notifigation/Notifigation";
 import obj from "./Object";
 import { v4 as uuidv4 } from "uuid";
 import NewSaveList from "./components/NewSaveList/NewSaveList";
+import Published from "./components/Stories/Published/Published";
 
 const allCategories = ["All", ...new Set(obj.map((item) => item.type))];
 
@@ -121,10 +122,15 @@ function App() {
           path="home/stories"
           element={
             <Stories
-              menuItems={menuItems}
-              setMenuItems={setMenuItems}
               stories={stories}
-              setstories={setstories}
+            />
+          }
+        />
+        <Route
+          path="published/:id"
+          element={
+            <Published
+            stories={stories}
             />
           }
         />

@@ -42,29 +42,29 @@ function Header({ nameinput, lastname, email }) {
                 </svg>
               </Tooltip>
             </NavLink>
-          <NavLink to="/home/notifigation">
-          <Tooltip title="Notifications" arrow>
-              <svg
-                className="header__icon"
-                width={24}
-                height={24}
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-label="Notifications"
-              >
-                <path
-                  d="M15 18.5a3 3 0 1 1-6 0"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M5.5 10.53V9a6.5 6.5 0 0 1 13 0v1.53c0 1.42.56 2.78 1.57 3.79l.03.03c.26.26.4.6.4.97v2.93c0 .14-.11.25-.25.25H3.75a.25.25 0 0 1-.25-.25v-2.93c0-.37.14-.71.4-.97l.03-.03c1-1 1.57-2.37 1.57-3.79z"
-                  stroke="currentColor"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Tooltip>
-          </NavLink>
+            <NavLink to="/home/notifigation">
+              <Tooltip title="Notifications" arrow>
+                <svg
+                  className="header__icon"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-label="Notifications"
+                >
+                  <path
+                    d="M15 18.5a3 3 0 1 1-6 0"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M5.5 10.53V9a6.5 6.5 0 0 1 13 0v1.53c0 1.42.56 2.78 1.57 3.79l.03.03c.26.26.4.6.4.97v2.93c0 .14-.11.25-.25.25H3.75a.25.25 0 0 1-.25-.25v-2.93c0-.37.14-.71.4-.97l.03-.03c1-1 1.57-2.37 1.57-3.79z"
+                    stroke="currentColor"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </Tooltip>
+            </NavLink>
             <NavLink to="/home/save">
               <Tooltip title="Save" arrow>
                 <svg
@@ -146,6 +146,22 @@ function Header({ nameinput, lastname, email }) {
             className="header__modal"
           >
             <ul className="list-unstyled header__modal__list p-3 m-0">
+              <li className="header__modal__item">
+                <p className="mb-3 d-flex align-items-center">
+                  Medium Partner Program
+                </p>
+              </li>
+              <li className="header__modal__item">
+                <p className="mb-3 d-flex align-items-center">
+                  Gift a membership
+                </p>
+              </li>
+              <li className="header__modal__item">
+                <p className="mb-3 d-flex align-items-center colorGreen">
+                  Become a member
+                </p>
+              </li>
+              <hr />
               <Link className="link__list" to="/">
                 <li className="header__modal__item">
                   <p className="mb-3 d-flex align-items-center">Sing out</p>
@@ -167,7 +183,8 @@ function Header({ nameinput, lastname, email }) {
               <li className="header__modal__item">
                 <p className="mb-3 d-flex align-items-center">Settings</p>
               </li>
-              <li className="header__modal__item">
+              <hr />
+              <li className="header__modal__item imga">
                 <p className="header__muhammadsodiq mb-3 d-flex">
                   <img
                     className="header__user-img2"
