@@ -17,7 +17,7 @@ function Advertisement() {
               <div className='advertisement__content'>
                 <h4>Joobie <br/> Ice Cream</h4>
                 <p>Sales off <span className='text-danger'>25%</span> </p>
-                <button>Shop now</button>
+                <button className="add__btns">Shop now</button>
               </div>
             </div>
           </li>
@@ -26,7 +26,7 @@ function Advertisement() {
               <img src={advert2} alt="advertImg" width='380' height='212' />
               <div className='advertisement__content'>
                 <h4>Fresh <br/> Guava Juice</h4>
-                <button>Shop now</button>
+                <button className="add__btns">Shop now</button>
               </div>
             </div>
           </li>
@@ -35,7 +35,7 @@ function Advertisement() {
               <img src={advert3} alt="advertImg" width='380' height='212' />
               <div className='advertisement__content'>
                 <h4>Fresh <br/> Vegetables</h4>
-                <button>Shop now</button>
+                <button className="add__btns">Shop now</button>
               </div>
             </div>
           </li>
