@@ -3,15 +3,17 @@ import "./Deal.scss";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import useStore from '../../store/store';
 import CardModal from '../CardModal/CardModal';
 import { Link } from 'react-router-dom';
+import Store from '../../store/store';
 
 function Deal() {
 
-  const dealObj = useStore(state => state.dealObj);
-  const addCart = useStore(state => state.addCard);
 
+  
+  const dealObj = Store(state => state.dealObj);
+
+  const addWishlist = Store(state => state.addWishlist)
 
 
   const dealSetting = {
@@ -36,9 +38,10 @@ function Deal() {
             <ul className='deals__list'>
               <Slider {...dealSetting}>
                 {dealObj.map(item => (
-                 <Link className="products__links" to={`/Location/${item.id}`}>
                   <li key={item.id} className='deals__item d-flex'>
-                    <img src={item.image} alt={item.name} width='326' height='358' />
+                    <Link className="products__links" to={`/Location/${item.id}`}>
+                    <img className="imgsf" src={item.image} alt={item.name} width='326' height='358' />
+                      </Link>
                     <div className='ms-4 w-100'>
                       <h5>{item.type}</h5>
                       <h4>{item.name}</h4>
@@ -73,11 +76,10 @@ function Deal() {
                        data-bs-toggle="offcanvas"
                        data-bs-target="#offcanvasRight"
                        aria-controls="offcanvasRight" 
-                       onClick={() => addCart(item)}  
+                       onClick={() => addWishlist(item)}  
                        className='deals__add'>Add to cart</button>
                     </div>
                   </li>
-                 </Link>
                ))}
                </Slider>
             </ul>

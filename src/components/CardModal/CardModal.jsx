@@ -1,37 +1,55 @@
-import React from 'react'
-import useStore from '../../store/store';
+import React from "react";
+import "./CardModal.scss";
+import { Link } from "react-router-dom";
+import Store from "../../store/store";
 
-function CardModal() {
+export default function Wishlist() {
+  const wishlistObj = Store(state => state.wishlistObj)
+  const addWishlist = Store(state => state.addWishlist)
 
-    const cards = useStore(state => state.items)
+  return(
+    <section className="offcanvas offcanvas-end mycart" tabIndex="-1" id="offcanvasRight3" aria-labelledby="offcanvasRightLabel">
+      <button type="button" className="quickview__xbtn" data-bs-dismiss="offcanvas" aria-label="Close"><i className='bx bx-chevron-right'></i></button>
 
-    console.log(cards);
-  
-  return (
-    <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-      <div className="offcanvas-header">
-        <h5 className="offcanvas-title" id="offcanvasRightLabel">My Cart</h5>
-        <button type="button" className='offcanvas-close' data-bs-dismiss="offcanvas" aria-label="Close">
-          <i className='bx bx-chevron-right' ></i>
-        </button>
-      </div>
-      <div className="offcanvas-body">
-        <ul>
-          {cards.map(item =>{
-            return (
-              <li key={item.id}>
-                <p>{item.name}</p>
-                <span>{item.newPrice}</span>
-               2
-              </li>
-            )
-          })}
+      <div className="wishlist__bigbox">
+        <h2 className="wishlist__title">Wishlist</h2>
+
+        <ul className="wishlist__list">
+          {wishlistObj.length === 0 ?
+            <li className="wishlist__items">
+              <i className='bx bx-heart wishlist__iheart'></i>
+              <p className="wishlist__no">No products in the wishlist.</p>
+              <button type="button" data-bs-dismiss="offcanvas" aria-label="Close" className="wishlist__btn">RETURN TO SHOP</button>
+            </li> : ""
+          }
+          {
+            wishlistObj.map((item, index) => {
+              return(
+                <li key={index+66} className="wishlist__item">
+                  <Link className="wishlist__link" to={`product/${item.id}`}>
+                    <div className="wishlist__imgbox">
+                      <img src={item.img[0]} alt="product" />
+                    </div>
+                    </Link>
+                    <div className="wishlist__box">
+
+                      <div className="d-flex justify-content-between align-items-center">
+                      <Link className="wishlist__link" to={`product/${item.id}`}>
+                        <h3 className="wishlist__name">{item.name}</h3>
+                      </Link>
+                        <button onClick={() => addWishlist(item)} className="wishlist__removebtn"><i className='bx bx-x'></i></button>
+                      </div>
+                      <p className="wishlist__price">${item.to_price}</p>
+                      <Link className="wishlist__link" to={`product/${item.id}`}>
+                        <p className="wishlist__select">SELECT OPTIONS</p>
+                      </Link>
+                    </div>
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
-    </div>
-)
+  </section>
+  )
 }
-
-
-
-export default CardModal

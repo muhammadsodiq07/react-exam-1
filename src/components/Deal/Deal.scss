@@ -167,8 +167,12 @@
 
 .slick-arrow{
   &::before{
-    display: none;
+    display: block;
     background-color:transparent;
     font-size: 24px !important;
   }
+}
+
+.imgsf {
+  object-fit: cover !important;
 }

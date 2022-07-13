@@ -1,66 +1,147 @@
-import React from "react";
-import useStore from "../../store/store";
-import Buttons from "./Buttons";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/splide/dist/css/splide.min.css';
+import { useEffect } from "react";
+import Store from "../../store/store";
 import "./Products.scss";
 
-import { Link } from "react-router-dom";
+export default function Products() {
+  const category = [
+  {
+      name: "Fruits",
+      icon: "bx bxl-apple",
+      active: true,
+    },
 
-function Products() {
-  const dealObj = useStore((state) => state.dealObj);
+    {
+      name: "Vegetables",
+      icon: "bx bxl-flask",
+      active: false,
+    },
 
-  let categoryArr = [
-    "Fruits",
-    "Vegetables",
-    "Milk & Cream",
-    "Banana",
-    "Sea Fodd",
-  ];
+    {
+      name: "Milk & Cream",
+      icon: "bx bx-cookie",
+      active: false,
+    },
 
-  let typeArr = ["Fruits", "Vegetables", "Milk & Cream", "Banana", "Sea Fodd"];
+    {
+      name: "Banana",
+      icon: "bx bx-baguette",
+      active: false,
+    },
 
-  return (
-    <section className="products">
+    {
+      name: "Sea Food",
+      icon: "bx bx-bowl-hot",
+      active: false,
+    },
+  ]
+
+  const [filter, setFilter] = useState('Fruits')
+  const [cates, setCates] = useState(category)
+  const data = Store(state => state.data)
+  const ids = Store(state => state.cartId)
+  const myCartAdd = Store(state => state.myCartAdd)
+  const addWishlist = Store(state => state.addWishlist)
+
+  //function
+  const idHander = (e) => {
+    ids(e)
+  }
+
+  const filterHandler = (e) => {
+    cates.map(item => item.name === e ? item.active = true : item.active = false)
+      setFilter(e)
+  }
+
+  useEffect(() => {
+    setCates(cates)
+  }, [cates])
+
+  return(
+    <section className="fproducts">
       <div className="container">
-        <h2 className="products__title">Featured Products</h2>
-        <ul className="products__list d-flex align-items-center justify-content-center pt-2">
-          {categoryArr.map((item, index) => {
-            return <Buttons key={index} item={item} id={typeArr[index]} />;
-          })}
-        </ul>
-        <ul className="products__list2 d-flex align-items-center justify-content-between flex-wrap pt-3">
-          {dealObj.map((item, index) => {
-            return (
-              <Link className="products__links" to={`/Location/${item.id}`}>
-                <li key={index} className="products__item">
-                  <i className="bx bx-heart products__icon"></i>
-                  <div className="products__inner-item">
-                    <img
-                      className="products__inner-img"
-                      src={item.img}
-                      alt={item.name}
-                    />
-                    <div className="products__inner-rel">
-                      <p className="products__inner-name">{item.name}</p>
-                      <span className="products__inner-span">
-                        ${item.price}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="products__inner-box">
-                    <div className="products__box-inner d-flex align-items-center">
-                      <i className="bx bx-shopping-bag products__box-icon"></i>
-                      <i className="bx bx-low-vision products__box-icon"></i>
-                      <i className="bx bx-sync products__box-icon"></i>
-                    </div>
-                  </div>
-                </li>
-              </Link>
-            );
-          })}
+        <div className="fproducts__boxs">
+          <h2 className="fproducts__title">Featured Products</h2>
+          <ul className="fproducts__clist p-0">
+            {
+              cates.map((type, ind) => {
+                return(
+                  <li key={ind+7523} className="fproducts__citem">
+                    <button onClick={() => filterHandler(type.name)} className={`fproducts__cbtn ${type.active ? "fproducts__active" : ""}`}>
+                      <i className={type.icon}></i>
+                      <h3 className="fproducts__cname">{type.name}</h3>
+                    </button>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+        
+
+        <ul className="fproducts__list p-0">
+          {
+            data.map((item, index) => {
+              if(item.category === filter) {
+                return(
+                  <li key={index+45} className="fproducts__item">
+                    <Link className="fproducts__link" to="/">
+                      <div className="fproducts__realative">
+                        <Splide
+                          options={{
+                          perPage: 1,
+                          arrows: true,
+                          pagination: false,
+                          drag: 'free',
+                        }}>
+                          <SplideSlide>
+                          <div className="fproducts__imgbox">
+                            <img src={item.img[0]} alt="" />
+                          </div>
+                        </SplideSlide>
+                        <SplideSlide>
+                          <div className="fproducts__imgbox">
+                            <img src={item.img[1]} alt="" />
+                          </div>
+                        </SplideSlide>
+                      </Splide>
+                          <button onClick={() => addWishlist(item)} className="fproducts__hbtn">{item.like ? <i className='bx bxs-heart fproducts__heart'></i> : <i className='bx bx-heart'></i>}</button>
+                          <div className="fproducts__mbox">
+                            <button onClick={()=> myCartAdd(item)} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2" aria-controls="offcanvasRight" className="fproducts__mbtn"><i className='bx bx-shopping-bag'></i></button>
+                            <button onClick={()=> idHander(item.id)} data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight1" aria-controls="offcanvasRight" className="fproducts__mbtn"><i className='bx bx-low-vision'></i></button>
+                            <button className="fproducts__mbtn"><i className='bx bx-refresh'></i></button>
+                          </div>
+                          <div className="fproducts__salebox">
+                            <span className="fproducts__salebox-sale">-{item.sold}%</span>
+                            <span className="fproducts__salebox-limited">Limited</span>
+                          </div>
+                        </div>
+                      <div className="fproducts__box">
+                        <h3 className="fproducts__subtitle">{item.name}</h3>
+                        <div className="fproducts__dflex">
+                          <p className="fproducts__price"> {item.discount_price !== null ? <del>${item.discount_price}</del> : "" } ${item.to_price}</p>
+
+                            {item.total !== null ? <div className="fproducts__kgbox">
+                                <button className="fproducts__kgbtn">{item.total.one_kg} <br/> kg</button>
+                                <button className="fproducts__kgbtn">{item.total.half_kg}<br/>g</button>
+                                <button className="fproducts__kgbtn">{item.total.half_2_kg}<br/>g</button>
+                              </div>
+                             : ""}
+
+
+                        </div>
+                      </div>
+                    </Link>
+                  </li>
+                )
+              }
+            })
+          }
         </ul>
       </div>
     </section>
-  );
+  )
 }
-
-export default Products;

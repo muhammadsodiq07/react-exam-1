@@ -1,28 +1,103 @@
-import create from 'zustand';
-import {
-  devtools
-} from 'zustand/middleware';
+import create from "zustand";
+import produce from "immer";
+import Object from "../Obj/ObjMain";
 import categoriesObj from "../categoriesObj";
 import dealObj from "../obj";
 
-let items = [];
-const store = (set) => ({
+const Store = create((set) => ({
+  data: Object,
   categoriesObj,
   dealObj: dealObj,
-  items: items,
-  addCard: (cards) => {
-    const existingItems = items.find((item) => item.id === cards.id)
+  myCartObj: [],
+  id: null,
+  wishlistObj: [],
+  subtotal: 0,
+  total: 19,
+  id: null,
+  percentage: 0,
 
-    if (!existingItems) {
-      items.push({
-        id: cards.id,
-        name: cards.name,
-        newPrice: cards.newPrice,
-      });
-    }
-  }
-})
+  
+  //function Id olish
+  cartId: (ids) =>
+    set((state) => ({id: ids})),
 
-const useStore = create(devtools(store))
+  // function
+  // myCartAdd: (ids) =>
+  //   set((state) => ({myCartObj: [...state.myCartObj, ...state.data.filter(item => item.id === ids)]})),
 
-export default useStore
+  //function Mycart add qilsh
+  myCartAdd: (ids) =>
+    set(
+      produce((state) => {
+        const produc = state.myCartObj.find(item => item.id === ids.id)
+        if(!produc) {
+          state.myCartObj.push(ids)
+          state.subtotal += ids.to_price
+          state.total += ids.to_price
+          state.percentage = (state.subtotal * 100) % 200
+        }else {
+          state.myCartObj.map(item => {
+            if(item.id === ids.id) {
+              state.subtotal += ids.to_price
+              state.total += ids.to_price
+              state.percentage = (state.subtotal * 100) % 200
+              return item.count += 1
+            }
+          })
+        }
+      })
+    ),
+
+  //function Mycart o'chirish
+  myCartDel: (ids) =>
+    set(
+      produce((state) => {
+        state.subtotal -= ids.to_price * ids.count
+        state.total -= ids.to_price * ids.count
+        state.myCartObj = state.myCartObj.filter(item => item.id !== ids.id)
+      })
+    ),
+
+  //function Mycart minus qilsh
+  myCartMinus: (ids) =>
+    set(
+      produce((state) => {
+        const produc = state.myCartObj.find(item => item.id === ids.id)
+        if(produc.count !== 1) {
+          state.myCartObj.map(item => {
+            if(item.id === ids.id) {
+              state.total -= ids.to_price
+              state.subtotal -= ids.to_price
+              return item.count -= 1
+            }
+          })
+        }
+      })
+    ),
+
+     //function Like
+  addWishlist: (ids) =>
+  set(
+    produce((state) => {
+      const product = state.data.find(item => item.id === ids.id)
+      if(!product.like) {
+        state.data.map(item => {
+          if(item.id === ids.id) {
+            state.wishlistObj.push(ids)
+            return item.like = true
+          }
+        })
+      } else {
+        state.data.map(item => {
+          if(item.id === ids.id) {
+            state.wishlistObj = state.wishlistObj.filter(like => like.id !== ids.id)
+            return item.like = false
+          }
+        })
+      }
+    })
+  ),
+
+}))
+
+export default Store;

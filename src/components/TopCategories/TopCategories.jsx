@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import useStore from '../../store/store';
+import Store from '../../store/store';
 
 
 function TopCategories() {
@@ -15,7 +16,8 @@ function TopCategories() {
     slidesToScroll: 1,
   }
 
-  const arr = useStore((state) => state.categoriesObj);
+
+  const data = Store(state => state.data)
 
   return (
     <div className='category'>
@@ -26,11 +28,11 @@ function TopCategories() {
         <div className='category__slider'>
           <Slider {...settings}>
             {
-              arr.map((item, index) => {
+              data.map((item, index) => {
                 return (
                   <div key={index} className='category__item-holder'>
                     <div className='category__img-holder'>
-                      <img src={item.img} alt={item.name} />
+                      <img src={item.img[0]} alt={item.name} />
                     </div>
                     <h3 className='category__item-title'>
                       {item.name}
